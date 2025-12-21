@@ -278,6 +278,8 @@ static void update_input(void)
     KeyStatus *keyStatus = cpu->getKeyStatus();
     keyStatus->clear();
 
+    // TODO (mittonk): 2 controllers for 2-player games?
+    auto NUM_CONTROLLERS = 1;
     unsigned pad = 0;
 
     if (input_state_cb((pad), RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_START))
@@ -308,6 +310,17 @@ static void update_input(void)
     // TODO (mittonk): Lever switch 2
     // TODO (mittonk): AUX switch
 
+    cpu->analogStatus.input_analog_left_x[pad] = input_state_cb( (pad), RETRO_DEVICE_ANALOG, RETRO_DEVICE_INDEX_ANALOG_LEFT,
+          RETRO_DEVICE_ID_ANALOG_X);
+
+    cpu->analogStatus.input_analog_left_y[pad] = input_state_cb( (pad), RETRO_DEVICE_ANALOG, RETRO_DEVICE_INDEX_ANALOG_LEFT,
+          RETRO_DEVICE_ID_ANALOG_Y);
+
+    cpu->analogStatus.input_analog_right_x[pad] = input_state_cb( (pad), RETRO_DEVICE_ANALOG, RETRO_DEVICE_INDEX_ANALOG_RIGHT,
+          RETRO_DEVICE_ID_ANALOG_X);
+
+    cpu->analogStatus.input_analog_right_y[pad] = input_state_cb( (pad), RETRO_DEVICE_ANALOG, RETRO_DEVICE_INDEX_ANALOG_RIGHT,
+          RETRO_DEVICE_ID_ANALOG_Y);
 }
 
 

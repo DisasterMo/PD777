@@ -12,8 +12,7 @@ ROM file handling is currently awkward, but gives some options that work.
 
 Most simple button and switch controls are working as in the standalone Windows and WASM builds.  Not yet working:
 1. Course selector not yet supported.
-2. Analog spinners not yet supported.
-3. Light gun not yet supported.
+2. Light gun not yet supported.
 
 Tested on:
 * Linux x86_64
