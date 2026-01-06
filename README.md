@@ -10,6 +10,9 @@ ROM file handling is currently awkward, but gives some options that work.
 3. Zip-files (bundling `.bin777` and `.ptn777`) are not yet supported, but could be later.
 4. There is not yet a suitable single-file format for the Cassette Vision.
 
+(For a test file, the upstream developer W88DodPECuThLOl has a homebrew Tetris port at
+* https://github.com/W88DodPECuThLOl/PD777supplement/tree/main/sample/NekkoRis/obj )
+
 Most simple button and switch controls are working as in the standalone Windows and WASM builds.  Not yet working:
 1. Light gun not yet supported.
 
