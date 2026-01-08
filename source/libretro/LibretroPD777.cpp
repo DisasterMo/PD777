@@ -6,12 +6,12 @@ extern retro_video_refresh_t video_cb;
 
 namespace {
 
-inline f32 clamp(f32 value, const f32 minValue, const f32 maxValue)
-{
-    if(value < minValue) { return minValue; }
-    if(value > maxValue) { return maxValue; }
-    return value;
-}
+    inline f32 clamp(f32 value, const f32 minValue, const f32 maxValue)
+    {
+        if(value < minValue) { return minValue; }
+        if(value > maxValue) { return maxValue; }
+        return value;
+    }
 
 } // namespace
 
@@ -70,24 +70,21 @@ bool LibretroPD777::isPD1(u8& value) {
     return true;
 }
 
-bool
-LibretroPD777::isPD2(u8& value)
+bool LibretroPD777::isPD2(u8& value)
 {
     padValue[1] = clamp(padValue[1] + float(analogStatus.input_analog_left_x[0]) / analogscale, KeyStatus::PAD_MIN_VALUE, KeyStatus::PAD_MAX_VALUE);
     value = (u8)((u8)padValue[1] & 0x7F);
     return true;
 }
 
-bool
-LibretroPD777::isPD3(u8& value)
+bool LibretroPD777::isPD3(u8& value)
 {
     padValue[2] = clamp(padValue[2] + float(analogStatus.input_analog_left_x[1]) / analogscale, KeyStatus::PAD_MIN_VALUE, KeyStatus::PAD_MAX_VALUE);
     value = (u8)((u8)padValue[2] & 0x7F);
     return true;
 }
 
-bool
-LibretroPD777::isPD4(u8& value)
+bool LibretroPD777::isPD4(u8& value)
 {
     padValue[3] = clamp(padValue[3] + float(analogStatus.input_analog_left_y[1]) / analogscale, KeyStatus::PAD_MIN_VALUE, KeyStatus::PAD_MAX_VALUE);
     value = (u8)((u8)padValue[3] & 0x7F);

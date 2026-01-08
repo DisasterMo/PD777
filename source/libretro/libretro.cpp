@@ -288,45 +288,45 @@ static void update_input(void)
     // Both pads get access to most of the simple buttons.
     unsigned pad = 0;
     for (pad=0; pad<NUM_CONTROLLERS; pad++) {
-       if (input_state_cb((pad), RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_START))
-           keyStatus->setGameStartKey();
-       if (input_state_cb((pad), RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_SELECT))
-           keyStatus->setGameSelectKey();
-       if (input_state_cb((pad), RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_R))
-           keyStatus->setAux();
-       if (input_state_cb((pad), RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_X))
-           keyStatus->setPush1();
-       if (input_state_cb((pad), RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_B))
-           keyStatus->setPush2();
-       if (input_state_cb((pad), RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_Y))
-           keyStatus->setPush3();
-       if (input_state_cb((pad), RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_A))
-           keyStatus->setPush4();
+        if (input_state_cb((pad), RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_START))
+            keyStatus->setGameStartKey();
+        if (input_state_cb((pad), RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_SELECT))
+            keyStatus->setGameSelectKey();
+        if (input_state_cb((pad), RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_R))
+            keyStatus->setAux();
+        if (input_state_cb((pad), RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_X))
+            keyStatus->setPush1();
+        if (input_state_cb((pad), RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_B))
+            keyStatus->setPush2();
+        if (input_state_cb((pad), RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_Y))
+            keyStatus->setPush3();
+        if (input_state_cb((pad), RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_A))
+            keyStatus->setPush4();
 
-       // Up and Down do not exist on the actual device; they get remapped for convenience.
-       if (input_state_cb((pad), RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_UP))
-           keyStatus->setUp();
-       if (input_state_cb((pad), RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_DOWN))
-           keyStatus->setDown();
-       
-       // Use D-pad Up and Down to control the Course Switch, used for things
-       // like aiming pitching in New Baseball.
-	   // メモ）コーススイッチをデジタルパッドの上下で切り替える
-	   {
-		   u8 courseSwitch = cpu->getCourseSwitch();
-		   if (input_state_cb((pad), RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_UP)) {
-			   if(courseSwitch < 5) {
-				   courseSwitch++;
-				   cpu->setCourseSwitch(courseSwitch);
-			   }
-		   }
-		   if (input_state_cb((pad), RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_DOWN)) {
-			   if(courseSwitch > 1) {
-				   courseSwitch--;
-				   cpu->setCourseSwitch(courseSwitch);
-			   }
-		   }
-	   }
+        // Up and Down do not exist on the actual device; they get remapped for convenience.
+        if (input_state_cb((pad), RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_UP))
+            keyStatus->setUp();
+        if (input_state_cb((pad), RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_DOWN))
+            keyStatus->setDown();
+
+        // Use D-pad Up and Down to control the Course Switch, used for things
+        // like aiming pitching in New Baseball.
+        // メモ）コーススイッチをデジタルパッドの上下で切り替える
+        {
+            u8 courseSwitch = cpu->getCourseSwitch();
+            if (input_state_cb((pad), RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_UP)) {
+                if(courseSwitch < 5) {
+                    courseSwitch++;
+                    cpu->setCourseSwitch(courseSwitch);
+                }
+            }
+            if (input_state_cb((pad), RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_DOWN)) {
+                if(courseSwitch > 1) {
+                    courseSwitch--;
+                    cpu->setCourseSwitch(courseSwitch);
+                }
+            }
+        }
     }
 
     // First controller gets left two paddles, for 1-player analog games.  Also
@@ -334,10 +334,10 @@ static void update_input(void)
     // 2-player games.
     pad = 0;
     cpu->analogStatus.input_analog_left_x[pad] = input_state_cb( (pad), RETRO_DEVICE_ANALOG, RETRO_DEVICE_INDEX_ANALOG_LEFT,
-          RETRO_DEVICE_ID_ANALOG_X);
+            RETRO_DEVICE_ID_ANALOG_X);
 
     cpu->analogStatus.input_analog_left_y[pad] = input_state_cb( (pad), RETRO_DEVICE_ANALOG, RETRO_DEVICE_INDEX_ANALOG_LEFT,
-          RETRO_DEVICE_ID_ANALOG_Y);
+            RETRO_DEVICE_ID_ANALOG_Y);
 
     if (input_state_cb((pad), RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_LEFT))
         keyStatus->setLeverSwitch1Left();
@@ -348,10 +348,10 @@ static void update_input(void)
     // Also lever switch 2.
     pad = 1;
     cpu->analogStatus.input_analog_left_x[pad] = input_state_cb( (pad), RETRO_DEVICE_ANALOG, RETRO_DEVICE_INDEX_ANALOG_LEFT,
-          RETRO_DEVICE_ID_ANALOG_X);
+            RETRO_DEVICE_ID_ANALOG_X);
 
     cpu->analogStatus.input_analog_left_y[pad] = input_state_cb( (pad), RETRO_DEVICE_ANALOG, RETRO_DEVICE_INDEX_ANALOG_LEFT,
-          RETRO_DEVICE_ID_ANALOG_Y);
+            RETRO_DEVICE_ID_ANALOG_Y);
 
     if (input_state_cb((pad), RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_LEFT))
         keyStatus->setLeverSwitch2Left();
